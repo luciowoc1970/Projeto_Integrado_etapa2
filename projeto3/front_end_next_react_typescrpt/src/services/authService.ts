@@ -1,11 +1,14 @@
 import axios from "axios";
 // import jwt from "jsonwebtoken";
 
-const API_URL = 'http://localhost:5000/';
+const API_URL = "http://localhost:8080/";
 
 export const authService = {
   login: async (nomeUsuario: string, senha: string): Promise<string | null> => {
-    const response = await axios.post(`${API_URL}authentication/login`, { nomeUsuario, senha });
+    const response = await axios.post(`${API_URL}authentication/login.php`, {
+      nomeUsuario,
+      senha,
+    });
     return response.data.token;
   },
 
@@ -24,7 +27,7 @@ export const authService = {
     //   return false;
     // }
 
-    return true
+    return true;
   },
 
   // validatePassword: (password: string, hash: string): boolean => {
